@@ -341,6 +341,7 @@ chrome.webRequest.onBeforeRequest.addListener(
     url = url.replace("developers.google.com", "developers.google.cn");
     url = url.replace("developer.android.com", "developer.android.google.cn");
     url = url.replace("source.android.com", "source.android.google.cn");
+    url = url.replace("www.gstatic.com", "www.gstatic.cn");
     return { redirectUrl: url };
   },
   {
@@ -361,6 +362,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://developers.google.com/*",
       "*://developer.android.com/*",
       "*://source.android.com/*",
+      "*://www.gstatic.com/*",
       //...test_urls, // 高级玩法的测试用例
       ...block_domain_urls, //阻止域名请求
     ],
