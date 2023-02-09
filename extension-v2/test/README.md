@@ -33,3 +33,15 @@
 1. [source.android.com](https://source.android.com)
 1. [jquery](https://releases.jquery.com/)
 1. [material](https://m3.material.io/)
+
+
+## 高级玩法测试例子
+
+- https://gerrit.googlesource.com/gerrit
+- https://www.chromium.org
+- https://chromium.googlesource.com/
+- https://source.chromium.org/chromium
+- https://cs.opensource.google/
+
+
+## v2 版本扩展支持 chromium 内核版本 49
