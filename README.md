@@ -32,7 +32,7 @@
 1. `developers.google.com` - 替换为 `developers.google.cn`
 1. `developer.android.com` - 替换为 `developer.android.google.cn`
 1. `source.android.com` - 替换为 `source.android.google.cn`
-1. `www.gstatic.com` - 替换为 `替换为`
+1. `www.gstatic.com` - 替换为 `www.gstatic.cn`
 
 ## 扩展选项页使用简述
 
