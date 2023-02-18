@@ -168,6 +168,10 @@ let default_domains_app = () => {
 
     rule["id"] = rule_id;
     rule["priority"] = 2;
+    //特殊定制规则ID=9999
+    if (rule_id === 9999) {
+      rule["priority"] = 9999;
+    }
     console.log(rule, rule_id);
     chrome.declarativeNetRequest.updateDynamicRules(
       {

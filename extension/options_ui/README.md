@@ -113,7 +113,7 @@ chrome.declarativeNetRequest.updateDynamicRules(
 ## 固定规则编号
 
 | 规则 ID |                     URI                      |    备注    |
-| :-----: |:--------------------------------------------:| :--------: |
+| :-----: | :------------------------------------------: | :--------: |
 |    1    |             ajax.googleapis.com              |    启用    |
 |    2    |             fonts.googleapis.com             |    启用    |
 |    3    |         themes.googleusercontent.com         |    启用    |
@@ -137,7 +137,6 @@ chrome.declarativeNetRequest.updateDynamicRules(
 
 > 默认未启用的规则，如何启用？ 答：在默认候选项选选项中，选中规则即启用规，规则列表可以看到启用的规则
 > 规则 id=9999，priority=9999。规则拥有最高优先级，作用： 覆盖其他地址重定向规则
-
 
 ## 演示地址的规则来源
 
