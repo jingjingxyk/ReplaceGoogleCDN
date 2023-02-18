@@ -39,9 +39,9 @@
 1. 点击扩展图标-自动打开扩展选项页
 1. [扩展选项配置原理](extension/options_ui/README.md)
 
-## v3功能变更记录[`CHANGELOG-0.10.x-V3`](CHANGELOG-v3-0.10.x.md) 
+## v3 功能变更记录[`CHANGELOG-0.10.x-V3`](CHANGELOG-v3-0.10.x.md)
 
-## v2功能变更记录[`CHANGELOG-0.10.x-V2`](CHANGELOG-v2-0.10.x.md)
+## v2 功能变更记录[`CHANGELOG-0.10.x-V2`](CHANGELOG-v2-0.10.x.md)
 
 ## [可用 公共 CDN 静态资源库 和 网络拨测工具](extension/rules/README.md)
 
