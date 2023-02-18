@@ -36,7 +36,7 @@
 
 ## 扩展选项页使用简述
 
-1. 点击扩展图标-自动打开扩展选项页
+1. <strong>点击扩展图标-自动打开扩展选项页</strong>
 1. [扩展选项配置原理](extension/options_ui/README.md)
 
 ## v3 功能变更记录[`CHANGELOG-0.10.x-V3`](CHANGELOG-v3-0.10.x.md)
