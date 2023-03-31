@@ -53,7 +53,6 @@ let deleteDynamicRules = (type, id = 0) => {
         addRules: [],
         removeRuleIds: del_ids,
       });
-      showRuleList();
     }
   });
 };
