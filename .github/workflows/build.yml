@@ -18,6 +18,11 @@ jobs:
           id -g
           who
           cat /etc/os-release
+          hostnamectl
+          uname -s
+          uname -m 
+          uname -r
+          node -v
       - name: Build
         run: |
           bash  release-archive.sh
