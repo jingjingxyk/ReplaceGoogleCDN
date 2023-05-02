@@ -18,13 +18,6 @@ jobs:
           path: |
             dist/ReplaceGoogleCDN-v2.zip
             dist/ReplaceGoogleCDN-v3.zip
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: |
-            dist/ReplaceGoogleCDN-v2.zip
-            dist/ReplaceGoogleCDN-v3.zip
       - name: Browser Plugin Publish v2
         if: 0
         uses: PlasmoHQ/bpp@v2
