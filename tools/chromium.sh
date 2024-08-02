@@ -79,10 +79,10 @@ cat > run-chromium.sh <<EOF
 set -x
 ${XVFB_COMMAND} ${__PROJECT__}/var/${CHROMIUM} \
   --user-data-dir=$USER_DATA \
+  --proxy-pac-url="http://127.0.0.1:65530/proxy.pac" \
   --enable-remote-extensions \
   --enable-extensions \
   --load-extension="$extensions" \
-  --auto-open-devtools-for-tabs \
   --enable-logging=stderr --v=1 \
   --remote-debugging-port=9222 ${HEADLESS_MODE} \
   --disable-encryption --disable-machine-id \
@@ -93,6 +93,16 @@ EOF
 
 bash run-chromium.sh
 
+
+
+
+
+
+
+
+
+
+exit 0
 
 
 # chrome://version
@@ -109,15 +119,15 @@ bash run-chromium.sh
 # 使用 代理 方式三
 #--proxy-server="SOCKS5://127.0.0.1:2000"
 
-# --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1"
+#  --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1"
 
 #  --flag-switches-begin \
 #  --disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure,ProcessPerSiteUpToMainFrameThreshold \
 #  --enable-features=VaapiVideoDecodeLinuxGL \
 #  --enable-features=PlatformHEVCDecoderSupport \
 #  --flag-switches-end \
-# --disable-extensions-except=
-
+#  --disable-extensions-except=
+#  --auto-open-devtools-for-tabs
 
 
 :<<'EOF'
