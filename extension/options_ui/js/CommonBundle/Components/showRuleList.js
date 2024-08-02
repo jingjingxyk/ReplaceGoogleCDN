@@ -2,11 +2,11 @@ import { updateDynamicRules, utils } from "./common.js";
 
 import {
   showDynamicRules,
-  bindDynamicRuleEventListener,
+  bindDynamicRuleEventListener
 } from "./showDynamicRules.js";
 import {
   showStaticRules,
-  bindStaticRuleEventListener,
+  bindStaticRuleEventListener
 } from "./showStaticRules.js";
 
 let timeoutHandler = null;

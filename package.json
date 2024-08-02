@@ -2,14 +2,15 @@
   "private": true,
   "scripts": {
     "fmt": "prettier --write \"extension/**/*.{ts,js}\"",
-    "build": "bash extension/tools/release-archive.sh",
+    "fmt:check": "prettier --check \"extension/**/*.{ts,js}\"",
     "release": "bash release-archive.sh",
-    "firefox-test": "npx web-ext run "
+    "firefox-test": "bash tools/firefox-web-ext.sh",
+    "chromium-test": "bash tools/chromium.sh"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.139",
-    "prettier": "^2.3.0",
-    "typescript": "^4.2.4",
-    "web-ext": "^7.6.2"
+    "@types/chrome": "^0.0.253",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2",
+    "web-ext": "^7.9.0"
   }
 }

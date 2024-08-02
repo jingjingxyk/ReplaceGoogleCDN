@@ -1,6 +1,6 @@
 import {
   id_ranges,
-  updateDynamicRules,
+  updateDynamicRules
 } from "../../CommonBundle/Components/common.js";
 import showRuleList from "../../CommonBundle/Components/showRuleList.js";
 

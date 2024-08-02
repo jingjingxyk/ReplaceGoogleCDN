@@ -27,12 +27,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 2,
     "priority": 100,
@@ -61,12 +59,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 3,
     "priority": 100,
@@ -92,12 +88,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 4,
     "priority": 100,
@@ -123,38 +117,6 @@
         "csp_report",
         "media",
         "websocket",
-
-        "other"
-      ]
-    }
-  },
-
-  {
-    "id": 5,
-    "priority": 100,
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "regexSubstitution": "https://gapis.geekzu.org/ajax/ajax/libs/\\1"
-      }
-    },
-    "condition": {
-      "regexFilter": "^https?://ajax\\.googleapis\\.com/ajax/libs/(.*?)",
-      "requestDomains": ["ajax.googleapis.com"],
-      "resourceTypes": [
-        "main_frame",
-        "sub_frame",
-        "stylesheet",
-        "script",
-        "image",
-        "font",
-        "object",
-        "xmlhttprequest",
-        "ping",
-        "csp_report",
-        "media",
-        "websocket",
-
         "other"
       ]
     }
@@ -184,12 +146,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 8,
     "priority": 90,
@@ -215,12 +175,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 9,
     "priority": 90,
@@ -246,7 +204,6 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
@@ -276,12 +233,10 @@
         "csp_report",
         "media",
         "websocket",
-
         "other"
       ]
     }
   },
-
   {
     "id": 11,
     "priority": 90,
@@ -307,38 +262,6 @@
         "csp_report",
         "media",
         "websocket",
-
-        "other"
-      ]
-    }
-  },
-
-  {
-    "id": 12,
-    "priority": 90,
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "regexSubstitution": "https://cdn.staticfile.org/\\1/\\2/\\3"
-      }
-    },
-    "condition": {
-      "regexFilter": "^https?://ajax\\.googleapis\\.com/ajax/libs/(.*?)/([\\.|\\d]*?)/(.*?)",
-      "requestDomains": ["ajax.googleapis.com"],
-      "resourceTypes": [
-        "main_frame",
-        "sub_frame",
-        "stylesheet",
-        "script",
-        "image",
-        "font",
-        "object",
-        "xmlhttprequest",
-        "ping",
-        "csp_report",
-        "media",
-        "websocket",
-
         "other"
       ]
     }

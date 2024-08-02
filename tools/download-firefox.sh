@@ -10,6 +10,20 @@ __PROJECT__=$(
   pwd
 )
 
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --proxy)
+      export HTTP_PROXY="$2"
+      export HTTPS_PROXY="$2"
+      export NO_PROXY="127.0.0.1,localhost,127.0.0.0/8,10.0.0.0/8,100.64.0.0/10,172.16.0.0/12,192.168.0.0/16,198.18.0.0/15,169.254.0.0/16"
+      export NO_PROXY="${NO_PROXY},localhost,.npmmirror.com,.aliyuncs.com,.taobao.org,.tsinghua.edu.cn,.ustc.edu.cn,.aliyun.com"
+    ;;
+  *)
+    ;;
+  esac
+  shift $(($# > 0 ? 1 : 0))
+done
+
 mkdir -p ${__PROJECT__}/var/
 
 cd ${__PROJECT__}/var/
@@ -31,11 +45,15 @@ cd ${__PROJECT__}/var/
 # firefox 114 支持 DNS over HTTPS ；WebTransport默认启用
 # https://www.mozilla.org/en-US/firefox/113.0/releasenotes/
 
+
+
 OS=$(uname -s)
 ARCH=$(uname -m)
 echo "${OS}_${ARCH}"
 
-FIREFOX_VERSION=119.0b7
+
+FIREFOX_VERSION=129.0b4
+
 
 if [ -n "$1" ]; then
   FIREFOX_VERSION="$1"
@@ -47,11 +65,11 @@ DOWNLOAD_FIREFOX_URL_PREFIX=https://archive.mozilla.org/pub/firefox/releases
 
 case $OS in
 "Linux")
-  test -f firefox-${FIREFOX_VERSION}.tar.bz2 && rm -rf firefox-${FIREFOX_VERSION}.tar.bz2
+  test -f firefox.tar.bz2 && rm -rf firefox.tar.bz2
   test -d firefox && rm -rf firefox
   DOWNLOAD_FIREFOX_URL=${DOWNLOAD_FIREFOX_URL_PREFIX}/${FIREFOX_VERSION}/linux-${ARCH}/en-US/firefox-${FIREFOX_VERSION}.tar.bz2
-  curl -Lo firefox-${FIREFOX_VERSION}.tar.bz2 ${DOWNLOAD_FIREFOX_URL}
-  tar -jxvf firefox-${FIREFOX_VERSION}.tar.bz2
+  curl -Lo firefox.tar.bz2 ${DOWNLOAD_FIREFOX_URL}
+  tar -jxvf firefox.tar.bz2
   ;;
 "Darwin")
   FIREFOX_DMG_FILE=Firefox%20${FIREFOX_VERSION}.dmg
@@ -72,16 +90,16 @@ case $OS in
   # hdiutil attach Firefox%20${FIREFOX_VERSION}.dmg
 
   # 将应用程序拷贝到指定目录
-  mkdir -p ${__PROJECT__}/var/Firefox
-  cp -rf /private/${TMP_MOUNT_POINT}/Firefox.app  ${__PROJECT__}/var/Firefox
-  ls -lh ${__PROJECT__}/var/Firefox/
+  mkdir -p ${__PROJECT__}/var/firefox
+  cp -rf /private/${TMP_MOUNT_POINT}/Firefox.app  ${__PROJECT__}/var/firefox
+  ls -lh ${__PROJECT__}/var/firefox/
 
   ;;
 
-"MINGW64_NT")
-  test -f Firefox%20Setup%20${FIREFOX_VERSION}.msi && rm -rf Firefox%20Setup%20${FIREFOX_VERSION}.msi
-  DOWNLOAD_FIREFOX_URL=${DOWNLOAD_FIREFOX_URL_PREFIX}/${FIREFOX_VERSION}/win64/en-US/Firefox%20Setup%20${FIREFOX_VERSION}.msi
-  curl -Lo Firefox%20Setup%20${FIREFOX_VERSION}.msi ${DOWNLOAD_FIREFOX_URL}
+'MINGW64_NT'* | 'MSYS_NT'*)
+  test -f firefox.exe && rm -rf firefox.exe
+  DOWNLOAD_FIREFOX_URL=${DOWNLOAD_FIREFOX_URL_PREFIX}/${FIREFOX_VERSION}/win64/en-US/Firefox%20Setup%20${FIREFOX_VERSION}.exe
+  curl -Lo firefox.exe ${DOWNLOAD_FIREFOX_URL}
   ;;
 esac
 

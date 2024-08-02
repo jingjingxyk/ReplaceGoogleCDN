@@ -3,14 +3,33 @@
 1. [轻松测试 Web API 与浏览器的兼容情况](https://caniuse.com/)
 1. [html5test](https://html5test.com/)
 1. [Features Detection](https://browserleaks.com/features)
+1. [浏览器请求重定向 V2 API ](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest)
+1. [浏览器请求重定向 V3 API ](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/declarativeNetRequest)
+1. [chromium浏览器请求重定向 V3 API ](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#method-updateDynamicRules)
+
+## 打包工具 v3 mainifest 兼容 firefox
+
+```shell
+# 临时生成 uuid :
+uuid | sed 's/-//g'
+
+# gecko id
+
+# 查看帮助
+python3 tools/update-v3-manifest.py  --help
+
+# 修改 mainfest.json 支持 firefix  系浏览器
+python3 tools/update-v3-manifest.py  firefox
+
+```
 
 ## 下载 chrome 应用商店里扩展,并解压出源码
 
 ```shell
 
-python3 tools/download-chromium-extension.sh
+bash  tools/download-chromium-extension.sh
 # 通过代理下载
-python3 tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
+bash  tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
 
 ```
 
@@ -20,12 +39,19 @@ python3 tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
 
 > 查看 chromium 版本 https://commondatastorage.googleapis.com/chromium-browser-snapshots/
 
+> https://download-chromium.appspot.com/
+
+> https://download-chromium.appspot.com/?platform=Win_x64&type=snapshots
+
+> ChromiumOS https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_ChromiumOS_Full/1101351/chrome-chromeos.zip
+
 ```shell
-# 下载 npmmirror.com 提供的 chromium 镜像
+
 bash tools/download-chromium.sh
 
 # 通过代理下载  chromium
-bash tools/download-chromium.sh --proxy http://127.0.0.1:1080 --official
+bash tools/download-chromium.sh --proxy http://127.0.0.1:1080
+
 ```
 
 ## 运行 chromium 浏览器
@@ -39,10 +65,13 @@ bash extension/tools/chromium.sh
 > 查看 firefox 版本 https://archive.mozilla.org/pub/firefox/releases/
 
 ```shell
-bash tools/download-firefox.sh
+
+# 下载最新版 firefox
+bash tools/download-firefox-latest.sh
 
 # 下载指定版本firefox
-bash tools/download-firefox.sh 118.0b3
+bash tools/download-firefox.sh 129.0b4
+
 ```
 
 ## 运行 firefox 浏览器
@@ -59,6 +88,27 @@ bash tools/firefox.sh
 bash tools/web-server.sh
 
 # 使用 pac 文件
-# chromium  --proxy-pac-url="http://127.0.0.1:8000/proxy.pac"  --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1"
+
+chromium  --proxy-pac-url="http://127.0.0.1:8000/proxy.pac"  --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1"
+
+```
+
+## 格式化代码
+
+```shell
+
+bash tools/format-code.sh
+
+
+```
+
+## npm install 指定源
+
+```bash
+
+npm install --registry=https://registry.npmjs.org/
+
+npm install --registry=https://registry.npmmirror.com
+
 
 ```

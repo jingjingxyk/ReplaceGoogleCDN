@@ -1,6 +1,7 @@
 # Replace Google CDN
 
-[![](https://img.shields.io/github/issues/justjavac/ReplaceGoogleCDN.svg)](https://github.com/justjavac/ReplaceGoogleCDN/issues) [![](https://img.shields.io/github/release/justjavac/ReplaceGoogleCDN.svg)](https://github.com/justjavac/ReplaceGoogleCDN/releases)
+[![](https://img.shields.io/github/issues/justjavac/ReplaceGoogleCDN.svg)](https://github.com/justjavac/ReplaceGoogleCDN/issues)
+[![](https://img.shields.io/github/release/justjavac/ReplaceGoogleCDN.svg)](https://github.com/justjavac/ReplaceGoogleCDN/releases)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kpampjmfiopfpkkepbllemkibefkiice.svg)](https://chrome.google.com/webstore/detail/kpampjmfiopfpkkepbllemkibefkiice)
 
 将 Google CDN 替换为国内的。
@@ -17,35 +18,43 @@
 
 ## 原理
 
-> 默认未启用的规则, 如需启用请到扩展选项页自行打开
+> 借助浏览器提供的API，实现请求地址重定向。
+>
+> -   [浏览器 V2 API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest)，
+> -   [浏览器 V3 API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/declarativeNetRequest)
+>
+> 默认未启用的规则, （双击扩展图标，进入扩展选项页面，可调整替换地址）
 
-此插件/扩展可以将以下的 cdn 资源替换为国内的：
+此插件/扩展可以将以下的 CDN 资源替换为国内的：
 
-1. `ajax.googleapis.com` - 前端公共库，替换为 `ajax.loli.net`
-1. `fonts.googleapis.com` - 免费字体库，替换为 `fonts.googleapis.cn`
-1. `themes.googleusercontent.com` - fonts 有时会使用到这个里面的资源，替换为 `themes.loli.net`
-1. `fonts.gstatic.com` - 免费字体库，替换为 `fonts.gstatic.cn`
-1. `www.google.com/recaptcha` - Google 图像验证库，替换为 `www.recaptcha.net/recaptcha`
-1. `secure.gravatar.com` - gravatar 头像，替换为 `gravatar.loli.net`
-1. `maxcdn.bootstrapcdn.com/bootstrap` - bootstrap 框架使用的 CDN，替换为 `lib.baomitu.com/twitter-bootstrap/`
-1. `code.jquery.com/jquery-(version)(suffix)` - jquery 框架使用的 CDN，替换为 `https://fastly.jsdelivr.net/npm/jquery@$verson/dist/jquery$suffix`
-1. `cdnjs.cloudflare.com` - 替换为 `cdnjs.loli.net` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `cdn.jsdelivr.net` - 替换为 `fastly.jsdelivr.net`
-1. `developers.google.com` - 替换为 `developers.google.cn` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `developer.android.com` - 替换为 `developer.android.google.cn` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `source.android.com` - 替换为 `source.android.google.cn` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `www.gstatic.com` - 替换为 `www.gstatic.cn` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `lh3.googleusercontent.com` 默认未启用, 如需启用请到扩展选项页自行打开
-1. `cdn.sstatic.net`- 替换为 `sstatic.net` 默认未启用, 如需启用请到扩展选项页自行打开
+| 序号 | 原地址                                        | 替换后的地址                                                              | 是否启用 | 简述                  |
+|----|--------------------------------------------|---------------------------------------------------------------------|------|---------------------|
+| 1  | `ajax.googleapis.com`                      | `ajax.loli.net`                                                     | ✅    | 前端公共库               |
+| 2  | `fonts.googleapis.com`                     | `fonts.googleapis.cn`                                               | ✅    | 免费字体库               |
+| 3  | `themes.googleusercontent.com`             | `themes.loli.net`                                                   | ✅    | fonts 资源引用          |
+| 4  | `fonts.gstatic.com`                        | `fonts.googleapis.cn`                                               | ✅    | 免费字体库               |
+| 5  | `www.google.com/recaptcha`                 | `www.recaptcha.net/recaptcha`                                       | ✅    | Google 图像验证库        |
+| 6  | `secure.gravatar.com`                      | `gravatar.loli.net`                                                 | ✅    | gravatar 头像         |
+| 7  | `maxcdn.bootstrapcdn.com/bootstrap`        | `lib.baomitu.com/twitter-bootstrap/`                                | ✅    | bootstrap 框架使用的 CDN |
+| 8  | `code.jquery.com/jquery-(version)(suffix)` | `https://fastly.jsdelivr.net/npm/jquery@$verson/dist/jquery$suffix` | ✅    | jquery 框架使用的 CDN    |
+| 9  | `cdnjs.cloudflare.com`                     | `cdnjs.loli.net`                                                    | -    | -                   |
+| 10 | `cdn.jsdelivr.net`                         | `fastly.jsdelivr.net`                                               | -    | -                   |
+| 11 | `developers.google.com`                    | `developers.google.cn`                                              | -    | -                   |
+| 12 | `developer.android.com`                    | `developer.android.google.cn`                                       | -    | -                   |
+| 13 | `source.android.com`                       | `source.android.google.cn`                                          | -    | -                   |
+| 14 | `www.gstatic.com`                          | `www.gstatic.cn`                                                    | -    | -                   |
+| 15 | `lh3.googleusercontent.com`                | `source.android.google.cn`                                          | -    | -                   |
+| 16 | `cdn.sstatic.net`                          | `sstatic.net`                                                       | -    | -                   |
 
 ## 扩展选项页使用简述
 
-1. <strong>点击扩展图标-自动打开扩展选项页</strong>
-1. [扩展选项配置原理](extension/options_ui/README.md)
+1. <strong>双击扩展图标-自动打开扩展选项配置页面</strong>
+1. [扩展选项配置页面原理](extension/options_ui/README.md)
 
-## v3 功能变更记录[`CHANGELOG-v3-x.x.x`](CHANGELOG-v3-x.x.x.md)
+## 功能变更记录
 
-## v2 功能变更记录[`CHANGELOG-v2-x.x.x`](CHANGELOG-v2-x.x.x.md)
+-   v3 功能变更记录[`CHANGELOG-v3-x.x.x`](CHANGELOG-v3-x.x.x.md)
+-   v2 功能变更记录[`CHANGELOG-v2-x.x.x`](CHANGELOG-v2-x.x.x.md)
 
 ## 效果
 
@@ -53,8 +62,10 @@
 
 ![](./screen-sof.png)
 
-第一行是 jquery.min.js 的原始请求 `https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js`，被拦截并替换，返回的状态码为
-307 Internal Redirect，耗时 26ms。第三行是 jquery.min.js 被替换后的请求，33kB，耗时 95ms。
+第一行是 jquery.min.js 的原始请求
+`https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js`，被拦截并替换，返回的状态码为
+307 Internal Redirect，耗时 26ms。第三行是 jquery.min.js
+被替换后的请求，33kB，耗时 95ms。
 
 下表是各种资源的网络请求对比（以替换后的速度为基准 100%）：
 
@@ -77,59 +88,70 @@
 
 ## 打包命令
 
-```shell
+构建打包结果位于 dist 目录。
 
-bash   release-archive-v2.sh
+打包 V2 版本
 
-bash   release-archive-v3.sh
+```bash
+bash release-archive.sh
+```
 
+打包 V3 版本
+
+```bash
+bash release-archive-v3.sh
 ```
 
 ## 安装
 
 ### 在线安装
 
-- [Chrome](https://chrome.google.com/webstore/detail/replace-google-cdn/kpampjmfiopfpkkepbllemkibefkiice)
-- [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/google-cdn-replace/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/replace-google-cdn/cojepngjobmaiajphkijbdcdjnnjhpjc)
+-   [Chrome](https://chrome.google.com/webstore/detail/replace-google-cdn/kpampjmfiopfpkkepbllemkibefkiice)
+-   [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/google-cdn-replace/)
+-   [Edge](https://microsoftedge.microsoft.com/addons/detail/replace-google-cdn/cojepngjobmaiajphkijbdcdjnnjhpjc)
 
 ### 手动安装：
 
 Chrome 安装方法（Google 被墙了上不去）：
 
-> 1. 下载 [ReplaceGoogleCDN](https://github.com/justjavac/ReplaceGoogleCDN/archive/master.zip) 然后解压，
->    找到 `extension` 子目录
-> 2. 打开 Chrome，输入: `chrome://extensions/`
-> 3. 勾选 Developer Mode
-> 4. 选择 Load unpacked extension... 然后定位到刚才解压的文件夹里面的 extension 目录，确定
-> 5. 这就安装好了，去掉 Developer Mode 勾选。
+1. 下载
+   [ReplaceGoogleCDN](https://github.com/justjavac/ReplaceGoogleCDN/archive/master.zip)
+   然后解压， 找到 `extension` 子目录
+1. 打开 Chrome，输入: `chrome://extensions/`
+1. 勾选 Developer Mode
+1. 选择 Load unpacked extension... 然后定位到刚才解压的文件夹里面的 extension
+   目录，确定
+1. 这就安装好了，去掉 Developer Mode 勾选。
 
-### 扩展下载方式三：(来自国内镜像) 克隆源代码以后， 步骤如上： :point_up_2: :point_up_2: :point_up_2:
+### 扩展下载方式三(来自国内镜像)
+
+克隆源代码以后，步骤如上：:point_up_2: :point_up_2: :point_up_2:
 
 1. [ReplaceGoogleCDN gitee 镜像](https://gitee.com/mirrors/replacegooglecdn)
-1. [ReplaceGoogleCDN gitcode 镜像](https://gitcode.net/mirrors/justjavac/replacegooglecdn.git)
+1. [ReplaceGoogleCDN gitcode 镜像](https://gitcode.com/mirrors/justjavac/replacegooglecdn.git)
 
-```shell
+```bash
 # 克隆源代码
 git clone -b master https://gitee.com/mirrors/replacegooglecdn.git --depth=1 --progress
+
 # 或者
-git clone -b master https://gitcode.net/mirrors/justjavac/replacegooglecdn.git --depth=1 --progress
+git clone -b master https://gitcode.com/mirrors/justjavac/replacegooglecdn.git --depth=1 --progress
 
 # 更新源代码
-
-git -C replacegooglecdn pull  --depth=1 --progress  --rebase=true
-
+git -C replacegooglecdn pull --depth=1 --progress --rebase
 ```
 
-### 扩展下载方式四：（已经构建好，可以上传扩展市场的代码）
+### 扩展下载方式四
+
+已经构建好，可以上传扩展市场的代码。
 
 1. [ReplaceGoogleCDN-v3.zip（release v3 版本）支持 chromium 系列浏览器](https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN-v3.zip)
 1. [ReplaceGoogleCDN-v2.zip（release v2 版本）同时支持 firefox 和 chromium 系列浏览器](https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN-v2.zip)
 1. [ReplaceGoogleCDN.zip（全部源码）](https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN.zip)
 
-#### 扩展下载方式四, 构建原理
+#### 构建原理
 
-```text
+```bash
 # 原理： github: page + action
 
 # 构建脚本
@@ -141,13 +163,11 @@ https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN.zip
 # 已经构建好扩展包下载地址
 https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN-v2.zip
 https://www.jingjingxyk.com/chromium-extension/ReplaceGoogleCDN-v3.zip
-
 ```
 
-## [declarative_net_reques 配置示例](extension/rules/README.md)
+## 文档
 
-## [测试用例](test/README.md)
-
-## [公共 CDN 静态资源库](public-cdn.md)
-
-## [网络拨测工具 (测试 公共 CDN 静态资源库 区域可用性)](tools/net-detect.md)
+-   [declarative_net_reques 规则配置示例](extension/rules/README.md)
+-   [测试用例](test/README.md)
+-   [公共 CDN 静态资源库](public-cdn.md)
+-   [网络拨测工具 (测试 公共 CDN 静态资源库 区域可用性)](tools/net-detect.md)

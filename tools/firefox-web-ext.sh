@@ -13,30 +13,37 @@ __PROJECT__=$(
   pwd
 )
 
+cd ${__PROJECT__}
+
+
 OS=$(uname -s)
 ARCH=$(uname -m)
 echo "$OS"
 
 FIREFOX=''
 UUID=''
-    case $OS in
-    "Linux")
-      UUID=$(cat /proc/sys/kernel/random/uuid)
-      FIREFOX=${__PROJECT__}/var/firefox/firefox
-      ;;
-    "Darwin")
-      UUID=$(uuidgen)
-      # macos firefox 默认启动目录
-      FIREFOX='/Applications/Firefox.app/Contents/MacOS/firefox'
-      # 自定义 启动目录
-      FIREFOX="${__PROJECT__}/var/Firefox/Firefox.app/Contents/MacOS/firefox-bin"
-     ;;
-    'MINGW64_NT'* | 'MSYS_NT'*)
-      ;;
-    *)
-        echo 'current script no support !'
-    ;;
-    esac
+
+case $OS in
+"Linux")
+  UUID=$(cat /proc/sys/kernel/random/uuid)
+  FIREFOX=${__PROJECT__}/var/firefox/firefox
+  ;;
+"Darwin")
+  UUID=$(uuidgen)
+  # macos firefox 默认启动目录
+  FIREFOX='/Applications/Firefox.app/Contents/MacOS/firefox'
+  # 自定义 启动目录
+  FIREFOX="${__PROJECT__}/var/firefox/Firefox.app/Contents/MacOS/firefox"
+ ;;
+'MINGW64_NT'* | 'MSYS_NT'*)
+  # FIREFOX="C:\Program Files\Mozilla Firefox\firefox.exe"
+  exit 0
+  ;;
+*)
+    echo 'current script no support !'
+    exit 0
+;;
+esac
 
 
 profile_folder="/tmp/${UUID}"
@@ -44,11 +51,15 @@ profile_folder="/tmp/${UUID}"
 mkdir -p $profile_folder
 
 
+
 mkdir -p ${__PROJECT__}/var/
 cd ${__PROJECT__}/var/
 
 
-# python3 ${__PROJECT__}/extension/tools/update-manifest.py  firefox
+# python3 ${__PROJECT__}/tools/update-manifest.py  firefox
+
+## 生成支持firefox 的扩展
+bash release-archive-v3.sh
 
 # firefox web extension
 # https://github.com/mdn/webextensions-examples.git
@@ -72,7 +83,8 @@ cd ${__PROJECT__}/var/
 cp -f ${__PROJECT__}/tools/prefs.js $profile_folder
 
 # 进入扩展所在目录
-cd ${__PROJECT__}/extension-v2/
+
+cd ${__PROJECT__}/var/extension-tmp/
 
 # reference https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run
 

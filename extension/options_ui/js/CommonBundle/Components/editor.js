@@ -25,10 +25,10 @@ let editor = {
           //console.log(updatedContent);
           let content_box = document.querySelector("#rule-content-container");
           content_box.value = updatedContent.text;
-        },
-      },
+        }
+      }
     });
-  },
+  }
 };
 
 export default editor;

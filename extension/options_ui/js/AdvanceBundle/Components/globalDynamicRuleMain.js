@@ -1,23 +1,24 @@
 import {
   deleteDynamicRules,
   updateDynamicRules,
-  backupAllDynamicRules,
+  backupSelfDefinedDynamicRules,
   utils,
   enableStaticRules,
-  id_ranges,
+  id_ranges
 } from "../../CommonBundle/Components/common.js";
 import { remote_repository_static_urls } from "../Config/rule_example_conf.js";
 import showRuleList from "../../CommonBundle/Components/showRuleList.js";
 import { showDynamicRules } from "../../CommonBundle/Components/showDynamicRules.js";
 
-//备份所有动态规则
-let bindBackupAllDynamicRuleEventListener = () => {
+//绑定备份自定义动态规则事件
+
+let bindBackupSelfDefinedDynamicRuleEventListener = () => {
   document
-    .querySelector(".backup-all-dynamic-rule")
+    .querySelector(".backup-self-defined-dynamic-rule")
     .addEventListener("click", (event) => {
       event.stopPropagation();
       event.preventDefault();
-      backupAllDynamicRules();
+      backupSelfDefinedDynamicRules();
     });
 };
 
@@ -82,7 +83,7 @@ let bindSyncRemoteStaticRuleEventListener = () => {
 
           let UpdateRulesetOptions = {
             disableRulesetIds: [],
-            enableRulesetIds: [],
+            enableRulesetIds: []
           };
           local_declarative_net_request.forEach((value) => {
             console.log(value);
@@ -199,8 +200,8 @@ let get_remote_repository_static_rule = async () => {
 };
 
 export default () => {
-  //备份所有动态规则
-  bindBackupAllDynamicRuleEventListener();
+  //备份自定义规则
+  bindBackupSelfDefinedDynamicRuleEventListener();
   //删除所有动态规则
   bindDeleteAllDynamicRuleEventListener();
 

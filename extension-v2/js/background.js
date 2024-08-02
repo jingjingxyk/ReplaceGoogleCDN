@@ -19,7 +19,7 @@ const remove_csp_item = [
   "cross-origin-embedder-policy",
   "cross-origin-opener-policy",
   "cross-origin-opener-policy-report-only",
-  "cross-origin-embedder-policy-report-only",
+  "cross-origin-embedder-policy-report-only"
 ];
 
 /**
@@ -42,7 +42,7 @@ const remove_csp_urls = [
   "*://developers.redhat.com/*",
   "*://*.githubusercontent.com/*",
   "*://pub.dev/*",
-  "*://stackoverflow.com/*",
+  "*://stackoverflow.com/*"
 ];
 
 /**
@@ -57,13 +57,13 @@ chrome.webRequest.onHeadersReceived.addListener(
         !remove_csp_item.includes(response_header.name.toLowerCase())
     );
     return {
-      responseHeaders: details.responseHeaders,
+      responseHeaders: details.responseHeaders
     };
   },
   {
     //    urls: ["<all_urls>"],
     urls: [
-      ...remove_csp_urls, //需要移除 Content-Security-Policy 的URL地址
+      ...remove_csp_urls //需要移除 Content-Security-Policy 的URL地址
     ],
     types: [
       "main_frame",
@@ -75,8 +75,8 @@ chrome.webRequest.onHeadersReceived.addListener(
       "object",
       "xmlhttprequest",
       "ping",
-      "other",
-    ],
+      "other"
+    ]
   },
   ["blocking", "responseHeaders"]
 );
@@ -134,8 +134,8 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://maxcdn.bootstrapcdn.com/bootstrap/*",
       "*://cdn.jsdelivr.net/*",
       "*://code.jquery.com/jquery-*",
-      "*://code.jquery.com/ui/*",
-    ],
+      "*://code.jquery.com/ui/*"
+    ]
   },
   ["blocking"]
 );

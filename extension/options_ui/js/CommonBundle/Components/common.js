@@ -7,23 +7,24 @@ let id_ranges = {
   self_define_rule: [20000, 29999],
   sync_remote_static_rule: [30000, 39999],
   sync_remote_rule: [40000, 320000],
-  all_dynamic_rule: [0, Infinity],
+  all_dynamic_rule: [0, Infinity]
 };
+
 //区间段名称
 let id_range_name_map = {
-  single_rule: "默认侯选项规则",
+  single_rule: "默认候选项规则",
   self_define_special_rule: "自定义特制规则",
   self_define_rule: "自定义普通规则",
   sync_remote_static_rule: "同步远端静态规则",
   sync_remote_rule: "同步远端动态规则",
-  all_dynamic_rule: "所有动态规则",
+  all_dynamic_rule: "所有动态规则"
 };
 
 //规则作用
 let rule_action_type_map = {
   redirect: "URI重定向",
   modifyHeaders: "修改请求头或者响应头",
-  block: "阻止请求",
+  block: "阻止请求"
 };
 
 let updateDynamicRules = (
@@ -35,13 +36,14 @@ let updateDynamicRules = (
   chrome.declarativeNetRequest.updateDynamicRules(
     {
       addRules: addRules,
-      removeRuleIds: removeRuleIds,
+      removeRuleIds: removeRuleIds
     },
     () => {
       callback(args);
     }
   );
 };
+
 let deleteDynamicRules = (type, id = 0, callback = () => {}, ...args) => {
   let del_ids = [];
   let id_range = [0, 0];
@@ -78,7 +80,7 @@ let deleteDynamicRules = (type, id = 0, callback = () => {}, ...args) => {
       chrome.declarativeNetRequest.updateDynamicRules(
         {
           addRules: [],
-          removeRuleIds: del_ids,
+          removeRuleIds: del_ids
         },
         () => {
           callback(args);
@@ -88,19 +90,39 @@ let deleteDynamicRules = (type, id = 0, callback = () => {}, ...args) => {
   });
 };
 
-let backupAllDynamicRules = () => {
+/**
+ * 备份自定义规则
+ */
+let backupSelfDefinedDynamicRules = () => {
   chrome.declarativeNetRequest.getDynamicRules((rules) => {
     if (rules.length > 0) {
       let time = new Date().toISOString();
       console.log(time);
       //time=parseInt(new Date().getTime() / 1000).toString()
       let filename =
-        "ReplaceGoogleCDN-backup-all-dynamic-rule-" + time + ".json";
-      console.log(filename);
-      utils.createJSONFile(rules, filename);
+        "replace-google-cdn-backup-self-defined-dynamic-rule-" + time + ".json";
+
+      let need_rules = [];
+      rules.map((rule, index, array) => {
+        if (
+          rule.id >= id_ranges["self_define_rule"][0] &&
+          rule.id <= id_ranges["self_define_rule"][1]
+        ) {
+          need_rules.push(rule);
+        }
+
+        if (
+          rule.id >= id_ranges["self_define_special_rule"][0] &&
+          rule.id <= id_ranges["self_define_special_rule"][1]
+        ) {
+          need_rules.push(rule);
+        }
+      });
+      utils.createJSONFile(need_rules, filename);
     }
   });
 };
+
 /**
  * 启用本地默认静态规则
  */
@@ -112,7 +134,7 @@ let enableStaticRules = (callback, ...args) => {
 
   let updateRulesetOptions = {
     disableRulesetIds: [],
-    enableRulesetIds: [],
+    enableRulesetIds: []
   };
 
   local_declarative_net_request.forEach((value) => {
@@ -136,9 +158,9 @@ export {
   utils,
   updateDynamicRules,
   deleteDynamicRules,
-  backupAllDynamicRules,
+  backupSelfDefinedDynamicRules,
   id_ranges,
   id_range_name_map,
   rule_action_type_map,
-  enableStaticRules,
+  enableStaticRules
 };

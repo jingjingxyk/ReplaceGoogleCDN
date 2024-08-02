@@ -15,11 +15,6 @@ __PROJECT__=$(
   pwd
 )
 
-mkdir -p ${__PROJECT__}/var/
-
-cd ${__PROJECT__}/var/
-
-
 # 本脚本存在的意义：从扩展应用商店下载扩展
 
 # 下载chromium 扩展，并解压
@@ -34,7 +29,7 @@ cd ${__PROJECT__}/var/
 ## 下载命令例子：
 # bash  tools/download-chromium-extension.sh  --proxy http://127.0.0.1:8015
 
-mirror=''
+
 while [ $# -gt 0 ]; do
   case "$1" in
   --proxy)
@@ -42,10 +37,8 @@ while [ $# -gt 0 ]; do
     export HTTPS_PROXY="$2"
     export NO_PROXY="127.0.0.1,localhost,127.0.0.0/8,10.0.0.0/8,100.64.0.0/10,172.16.0.0/12,192.168.0.0/16,198.18.0.0/15,169.254.0.0/16"
     export NO_PROXY="${NO_PROXY},localhost,.npmmirror.com,.aliyuncs.com,.taobao.org,.tsinghua.edu.cn,.ustc.edu.cn,.aliyun.com"
-    shift
     ;;
   *) ;;
-
   esac
   shift $(($# > 0 ? 1 : 0))
 done
@@ -53,9 +46,6 @@ done
 mkdir -p chromium-extensions
 cd ${__PROJECT__}/var/chromium-extensions
 
-# google translate
-extension_id=aapbdbdomjkkjkaonfhkkikfgjllcleb
-file_name='google-translate'
 
 # Clear Site Data
 extension_id=aihgofjefdlhpnmeakpnjjeajofpcbhj

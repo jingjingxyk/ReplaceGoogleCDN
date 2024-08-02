@@ -2,7 +2,7 @@ import {
   deleteDynamicRules,
   id_ranges,
   id_range_name_map,
-  rule_action_type_map,
+  rule_action_type_map
 } from "./common.js";
 
 let getRuleRangeType = (rule_id) => {
@@ -68,7 +68,7 @@ let bindDynamicRuleEventListener = () => {
 
         editor.set({
           json: JSON.parse(content),
-          text: undefined,
+          text: undefined
         });
         content_box.value = decodeURIComponent(
           event.target.getAttribute("data-origin")

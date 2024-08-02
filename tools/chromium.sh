@@ -12,6 +12,27 @@ __PROJECT__=$(
 
 cd ${__DIR__}
 
+XVFB_COMMAND=''
+HEADLESS_MODE=''
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --xvfb)
+      XVFB_COMMAND='xvfb-run --auto-servernum  -e /dev/stdout  -s "-terminate -screen 0 1920x1080x24" '
+    ;;
+  --xwfb)
+      XVFB_COMMAND='xwfb-run  '
+    ;;
+  --headless)
+      HEADLESS_MODE='--headless --disable-gpu '
+    ;;
+  *)
+    ;;
+  esac
+  shift $(($# > 0 ? 1 : 0))
+done
+
+
 OS=$(uname -s)
 ARCH=$(uname -m)
 echo "$OS"
@@ -25,17 +46,17 @@ CHROMIUM=''
 
 case $OS in
 "Linux")
-  UUID=$(cat /proc/sys/kernel/random/uuid)
-  CHROMIUM='chrome-linux/chrome'
+    UUID=$(cat /proc/sys/kernel/random/uuid)
+    CHROMIUM='chrome-linux/chrome'
   ;;
 "Darwin")
-  UUID=$(uuidgen)
-  CHROMIUM='chrome-mac/Chromium.app/Contents/MacOS/Chromium'
+    UUID=$(uuidgen)
+    CHROMIUM='chrome-mac/Chromium.app/Contents/MacOS/Chromium'
   ;;
 "MINGW64_NT")
-  # set chrome_user_data_dir='C:\Users\%username%\Local" "Settings\Temp\chrome-user-data'
-  # IF NOT EXIST %chrome_user_data_dir%  MD %chrome_user_data_dir%
-  CHROMIUM='chrome-win\\chrome.exe'
+    # set chrome_user_data_dir='C:\Users\%username%\Local" "Settings\Temp\chrome-user-data'
+    # IF NOT EXIST %chrome_user_data_dir%  MD %chrome_user_data_dir%
+    CHROMIUM='chrome-win/chrome.exe'
   ;;
   *)
     echo 'current script no support !'
@@ -52,17 +73,27 @@ cd ${__PROJECT__}/var
 #扩展所在目录
 extensions=${__PROJECT__}/extension
 
-${CHROMIUM} \
+
+cat > run-chromium.sh <<EOF
+#!/usr/bin/env bash
+set -x
+${XVFB_COMMAND} ${__PROJECT__}/var/${CHROMIUM} \
   --user-data-dir=$USER_DATA \
   --enable-remote-extensions \
   --enable-extensions \
   --load-extension="$extensions" \
   --auto-open-devtools-for-tabs \
   --enable-logging=stderr --v=1 \
-  --remote-debugging-port=9222 \
+  --remote-debugging-port=9222 ${HEADLESS_MODE} \
   --disable-encryption --disable-machine-id \
   --start-maximized \
   about:blank
+EOF
+
+
+bash run-chromium.sh
+
+
 
 # chrome://version
 # 全屏
