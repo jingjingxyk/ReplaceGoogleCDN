@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env base
 
 if [ ! "$BASH_VERSION" ]; then
   echo "Please do not use BASH  to run this script ($0), just execute it directly" 1>&2
@@ -27,7 +27,7 @@ __PROJECT__=$(
 # `https://clients2.google.com/service/update2/crx?response=redirect&prodversion=${version}&acceptformat=crx2,crx3&x=id%3D${result[1]}%26uc&nacl_arch=${nacl_arch}`;
 
 ## 下载命令例子：
-# bash  tools/download-chromium-extension.sh  --proxy http://127.0.0.1:8015
+# base  tools/download-chromium-extension.sh  --proxy http://127.0.0.1:8015
 
 while [ $# -gt 0 ]; do
   case "$1" in

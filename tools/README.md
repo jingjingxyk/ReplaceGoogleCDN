@@ -27,9 +27,9 @@ python3 tools/update-v3-manifest.py  firefox
 
 ```shell
 
-bash  tools/download-chromium-extension.sh
+base  tools/download-chromium-extension.sh
 # 通过代理下载
-bash  tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
+base  tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
 
 ```
 
@@ -47,17 +47,17 @@ bash  tools/download-chromium-extension.sh --proxy http://127.0.0.1:1080
 
 ```shell
 
-bash tools/download-chromium.sh
+base tools/download-chromium.sh
 
 # 通过代理下载  chromium
-bash tools/download-chromium.sh --proxy http://127.0.0.1:1080
+base tools/download-chromium.sh --proxy http://127.0.0.1:1080
 
 ```
 
 ## 运行 chromium 浏览器
 
 ```shell
-bash extension/tools/chromium.sh
+base extension/tools/chromium.sh
 ```
 
 ## 下载 firefox 浏览器
@@ -67,17 +67,17 @@ bash extension/tools/chromium.sh
 ```shell
 
 # 下载最新版 firefox
-bash tools/download-firefox-latest.sh
+base tools/download-firefox-latest.sh
 
 # 下载指定版本firefox
-bash tools/download-firefox.sh 129.0b4
+base tools/download-firefox.sh 129.0b4
 
 ```
 
 ## 运行 firefox 浏览器
 
 ```shell
-bash tools/firefox.sh
+base tools/firefox.sh
 ```
 
 ## 启动 Proxy Auto-Configuration
@@ -85,7 +85,7 @@ bash tools/firefox.sh
 > Proxy Auto-Configuration (PAC) file
 
 ```shell
-bash tools/web-server.sh
+base tools/web-server.sh
 
 # 使用 pac 文件
 
@@ -97,7 +97,7 @@ chromium  --proxy-pac-url="http://127.0.0.1:8000/proxy.pac"  --host-resolver-rul
 
 ```shell
 
-bash tools/format-code.sh
+base tools/format-code.sh
 
 
 ```

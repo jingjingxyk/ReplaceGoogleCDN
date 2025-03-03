@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-x86_64-chromium
 
       - name: Download Chromium
-        shell: bash
+        shell: base
         run: |
           set -x
           if [ ! -f var/chrome-win.zip ] ; then
@@ -49,7 +49,7 @@ jobs:
           key: ${{ runner.os }}-x86_64-firefox
 
       - name: Download Firefox
-        shell: bash
+        shell: base
         run: |
           set -x
           if [ ! -f var/firefox.exe ] ; then

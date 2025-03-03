@@ -74,7 +74,7 @@ jobs:
           key: ${{ runner.os }}-x86_64-firefox
 
       - name: Download Firefox
-        shell: bash
+        shell: base
         run: |
           set -x
           if [ ! -f ${{ github.workspace }}/var/firefox.dmg ] ; then
@@ -82,7 +82,7 @@ jobs:
           fi
 
       - name: show browser version
-        shell: bash
+        shell: base
         run: |
           ls -lha var/
           var/chrome-mac/Chromium.app/Contents/MacOS/Chromium --version

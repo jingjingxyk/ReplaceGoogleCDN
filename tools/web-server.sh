@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env base
 set -exu
 
 __DIR__=$(

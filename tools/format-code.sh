@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env base
 
 set -exu
 
@@ -11,8 +11,6 @@ cd ${__DIR__}
 __PROJECT__=$(readlink -f ${__DIR__}/../)
 
 cd ${__PROJECT__}
-
-npm install --registry=https://registry.npmmirror.com
 
 npx prettier --write .
 

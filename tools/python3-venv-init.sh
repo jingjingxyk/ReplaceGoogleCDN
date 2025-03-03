@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env base
 
 set -exu
 __DIR__=$(
@@ -23,4 +23,4 @@ cd ${__PROJECT__}/tools/
 pip3 install mkdocs-material -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip3 install playwright -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-pip3 freeze > requirements.txt
+pip3 freeze >requirements.txt

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env base
 set -exu
 
 __DIR__=$(
@@ -17,7 +17,7 @@ if [ ! "$BASH_VERSION" ]; then
 fi
 
 # 使用代理下载源码
-# bash  update-library.sh --proxy http://127.0.0.1:1080
+# base  update-library.sh --proxy http://127.0.0.1:1080
 
 while [ $# -gt 0 ]; do
   case "$1" in
