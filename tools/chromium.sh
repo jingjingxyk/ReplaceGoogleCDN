@@ -79,7 +79,6 @@ set -x
 ${XVFB_COMMAND} ${__PROJECT__}/var/${CHROMIUM} \
   --user-data-dir=$USER_DATA \
   --no-sandbox \
-  --ozone-platform=wayland \
   --enable-remote-extensions \
   --enable-extensions \
   --load-extension="$extensions" \

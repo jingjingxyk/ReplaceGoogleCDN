@@ -12,7 +12,9 @@ __PROJECT__=$(readlink -f ${__DIR__}/../)
 
 cd ${__PROJECT__}
 
-npm install --registry=https://registry.npmmirror.com
+if [[ ! -f ${__PROJECT__}/bin/runtime/node/bin/node ]]; then
+  bash tools/setup-nodejs-runtime.sh --mirror china
+fi
 
 npx prettier --write .
 
