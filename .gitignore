@@ -21,3 +21,4 @@ var
 bin
 pnpm-lock.yaml
 .venv
+.env
