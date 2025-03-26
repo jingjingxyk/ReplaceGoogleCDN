@@ -9,12 +9,12 @@
     "docs-check": "prettier docs --check"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.307",
+    "@types/chrome": "^0.0.312",
     "npm-check": "^6.0.1",
-    "pnpm": "^10.5.2",
+    "pnpm": "^10.7.0",
     "prettier": "^3.5.3",
-    "puppeteer-core": "^24.3.0",
+    "puppeteer-core": "^24.4.0",
     "typescript": "^5.8.2",
-    "web-ext": "^8.4.0"
+    "web-ext": "^8.5.0"
   }
 }

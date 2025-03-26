@@ -21,7 +21,10 @@ export PATH=${__PROJECT__}/bin/runtime/node/bin:$PATH
 while [ $# -gt 0 ]; do
   case "$1" in
   --init)
-    npm install pnpm puppeteer-core prettier web-ext --save-dev --registry=https://registry.npmmirror.com
+    # https://pnpm.io/installation
+    npm install  pnpm --registry=https://registry.npmmirror.com
+    # npm instrlal puppeteer-core prettier web-ext --save-dev --registry=https://registry.npmmirror.com
+    npx pnpm  add -D puppeteer-core prettier web-ext --registry=https://registry.npmmirror.com
     ;;
   --install)
     npx pnpm install --registry=https://registry.npmmirror.com

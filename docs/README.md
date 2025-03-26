@@ -1,4 +1,4 @@
-# 请求地址重定向 工具文档 文档
+# 请求地址重定向工具文档】
 
 借助浏览器提供的API，实现请求地址重定向
 
@@ -17,3 +17,11 @@ V3 使用声明式规则 实现 对HTTP请求的 请求头 和 响应头的修�
 ## [firefox 支持 V3 情况](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/declarativeNetRequest)
 
 firefox 113 版本开始支持 v3
+
+# 文档
+
+请求地址重定向 工具文档
+
+## 实现原理
+
+借助浏览器提供的API，实现请求地址重定向
