@@ -14,9 +14,9 @@ __PROJECT__=$(
 # docker pull squidfunk/mkdocs-material
 
 mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/var/
+cd ${__PROJECT__}/
 
-. venv/bin/activate
+source .venv/bin/activate
 
 cd ${__PROJECT__}/
 

@@ -28,7 +28,7 @@ zip -r ${__PROJECT__}/dist/ReplaceGoogleCDN-v2.zip . \
   -x "./test/*"
 
 cd ${__PROJECT__}
-zip -u dist/ReplaceGoogleCDN-v2.zip ./README.md
+zip -u dist/ReplaceGoogleCDN-v2.zip ./index.md
 zip -u dist/ReplaceGoogleCDN-v2.zip ./Privacy.md
 zip -u dist/ReplaceGoogleCDN-v2.zip ./LICENSE
 

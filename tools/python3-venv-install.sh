@@ -12,12 +12,10 @@ __PROJECT__=$(
 )
 
 mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/var/
+cd ${__PROJECT__}/
 
-python3 -m venv venv
-
-. venv/bin/activate
+source .venv/bin/activate
 
 cd ${__PROJECT__}/tools/
 
-pip3 install --upgrade -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+uv pip install --upgrade -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
