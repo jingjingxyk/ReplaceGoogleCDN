@@ -125,20 +125,16 @@ Chrome 安装方法（Google 被墙了上不去）：
 
 ### 扩展下载方式三(来自国内镜像)
 
-克隆源代码以后，步骤如上：:point_up_2: :point_up_2: :point_up_2:
+克隆源代码以后，步骤如上：🔼
 
-1. [ReplaceGoogleCDN gitee 镜像](https://gitee.com/mirrors/replacegooglecdn)
-1. [ReplaceGoogleCDN gitcode 镜像](https://gitcode.com/mirrors/justjavac/replacegooglecdn.git)
+1. [ReplaceGoogleCDN gitee 镜像](https://gitee.com/jingjingxyk/ReplaceGoogleCDN.git)
 
 ```bash
 # 克隆源代码
-git clone -b master https://gitee.com/mirrors/replacegooglecdn.git --depth=1 --progress
-
-# 或者
-git clone -b master https://gitcode.com/mirrors/justjavac/replacegooglecdn.git --depth=1 --progress
+git clone -b master https://gitee.com/jingjingxyk/ReplaceGoogleCDN.git --depth=1 --progress
 
 # 更新源代码
-git -C replacegooglecdn pull --depth=1 --progress --rebase
+git -C replacegooglecdn pull --depth=1 --progress 
 ```
 
 ### 扩展下载方式四

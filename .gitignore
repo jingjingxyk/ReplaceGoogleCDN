@@ -19,6 +19,7 @@ tools/web/proxy.pac
 dist
 var
 bin
+runtime
 pnpm-lock.yaml
 .venv
 .env

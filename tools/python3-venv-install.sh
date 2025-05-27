@@ -14,7 +14,10 @@ __PROJECT__=$(
 mkdir -p ${__PROJECT__}/var/
 cd ${__PROJECT__}/
 
-source .venv/bin/activate
+pip3 install uv -i https://pypi.tuna.tsinghua.edu.cn/simple
+uv venv --python 3.13
+. .venv/bin/activate
+
 
 cd ${__PROJECT__}/tools/
 
