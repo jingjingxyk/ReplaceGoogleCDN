@@ -12,10 +12,10 @@ __PROJECT__=$(
 )
 
 mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/
+cd ${__PROJECT__}/var/
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="${__PROJECT__}/bin/runtime/node/bin/:$PATH"
+export PATH="${__PROJECT__}/runtime/node/bin/:$PATH"
 
 test -f .env || cp .env.example .env
 

@@ -12,7 +12,7 @@ __PROJECT__=$(
 )
 
 mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/
+cd ${__PROJECT__}/var/
 
 pip3 install uv -i https://pypi.tuna.tsinghua.edu.cn/simple
 uv venv --python 3.13
