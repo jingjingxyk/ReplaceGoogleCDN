@@ -14,7 +14,7 @@ __PROJECT__=$(
 # docker pull squidfunk/mkdocs-material
 
 mkdir -p ${__PROJECT__}/var/
-cd ${__PROJECT__}/
+cd ${__PROJECT__}/var/
 
 if [ ! -d "${__PROJECT__}/var/.venv" ]; then
   bash ${__PROJECT__}/tools/python3-venv-install.sh
