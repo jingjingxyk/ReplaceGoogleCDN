@@ -29,4 +29,4 @@ mkdocs --help
 mkdocs build --help
 mkdocs build -d dist/docs/
 # mkdocs serve -f mkdocs.yml
-python3 -m http.server  -d dist/docs/ 8000
+python3 -m http.server -d dist/docs/ 8000

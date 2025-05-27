@@ -86,11 +86,12 @@ ${XVFB_COMMAND} ${__PROJECT__}/var/${CHROMIUM} \
   --remote-debugging-port=9222 ${HEADLESS_MODE} \
   --disable-encryption --disable-machine-id \
   --start-maximized \
+  --proxy-pac-url="http://127.0.0.1:65530/proxy.pac" \
   about:blank
 
 EOF
 
-#   --proxy-pac-url="http://127.0.0.1:65530/proxy.pac" \
+#
 bash run-chromium.sh
 
 exit 0

@@ -25,7 +25,7 @@ function go_proxy(url, host) {
 }
 
 function FindProxyForURL(url, host) {
-  if (isPlainHostName(host)) {
+  if (isPlainHostName(host)) { //域名里不包含 . 符号 ，快速识别无域名的本地设备
     return "DIRECT";
   }
   if (
@@ -36,7 +36,9 @@ function FindProxyForURL(url, host) {
   ) {
     return "DIRECT";
   }
-
+  if (shExpMatch(host, "*.example.com") || shExpMatch(host, "another-site.com")) {
+    return "SOCKS5 127.0.0.1:2000";
+  }
   if (go_proxy(url, host)) {
     return "SOCKS5 127.0.0.1:2000";
     //return "PROXY 127.0.0.1:8015";

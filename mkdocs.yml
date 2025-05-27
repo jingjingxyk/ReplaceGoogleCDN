@@ -16,8 +16,12 @@ plugins:
   - offline
 
 nav:
-  - index.md
+  - home: index.md
   - base:
       - base/index.md
   - advance:
-      - advance/index.md
+      - advanced/index.md
+  - tools:
+      - tools/index.md
+  - tutorials:
+      - tutorials/index.md

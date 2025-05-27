@@ -11,4 +11,5 @@ extension/manifest-backup.json
 tools/web/proxy.pac
 dist
 var
+pnpm-lock.yaml
 .venv

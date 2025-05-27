@@ -41,6 +41,8 @@ export PATH=${__PROJECT__}/runtime/node/bin:$PATH
 
 if [[ "$MIRROR" == "china" ]]; then
   npm install -d --registry=https://registry.npmmirror.com
+  # npm instrlal puppeteer-core prettier web-ext --save-dev --registry=https://registry.npmmirror.com
+  # npx pnpm  add -D puppeteer-core prettier web-ext --registry=https://registry.npmmirror.com
 else
   npm install -d
 fi

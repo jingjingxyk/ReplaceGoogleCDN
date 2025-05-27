@@ -1,12 +1,12 @@
-# 请求地址重定向 工具文档 文档
+# 请求地址重定向工具文档】
 
-> 借助浏览器提供的API，实现请求地址重定向
+借助浏览器提供的API，实现请求地址重定向
 
 ## v2 版本 与 v3 最大的区别：
 
-> V2 版本允许使用 javascript 脚本 动态修改 HTTP请求的 请求头 和 响应头
+V2 版本允许使用 javascript 脚本 动态修改 HTTP请求的 请求头 和 响应头
 
-> V3 使用声明式规则 实现 对HTTP请求的 请求头 和 响应头的修改,不支持使用 javascript 动态修改
+V3 使用声明式规则 实现 对HTTP请求的 请求头 和 响应头的修改,不支持使用 javascript 动态修改
 
 ## 浏览器 V2 API
 
@@ -16,4 +16,12 @@
 
 ## [firefox 支持 V3 情况](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/declarativeNetRequest)
 
-> firefox 113 版本开始支持 v3
+firefox 113 版本开始支持 v3
+
+# 文档
+
+请求地址重定向 工具文档
+
+## 实现原理
+
+借助浏览器提供的API，实现请求地址重定向

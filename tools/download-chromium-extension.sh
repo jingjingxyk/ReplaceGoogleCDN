@@ -54,6 +54,13 @@ file_name='Clear-Site-Data'
 extension_id=cpmmilfkofbeimbmgiclohpodggeheim
 file_name='Multi-Elasticsearch-Head'
 
+# Traduzir-paginas-web
+# https://github.com/FilipePS/Traduzir-paginas-web
+# ZeroOmega
+# https://github.com/zero-peak/ZeroOmega.git
+# SmartProxy
+# https://github.com/salarcode/SmartProxy.git
+
 # replace-google-cdn 为了看扩展市场与本仓库的代码区别
 extension_id=kpampjmfiopfpkkepbllemkibefkiice
 file_name='replace-google-cdn'

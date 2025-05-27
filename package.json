@@ -6,14 +6,16 @@
     "format-code": "npx prettier --write . ",
     "release": "bash release-archive.sh",
     "firefox-test": "bash tools/firefox-web-ext.sh",
-    "chromium-test": "bash tools/chromium.sh"
+    "chromium-test": "bash tools/chromium.sh",
+    "docs-check": "prettier docs --check"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.323",
+    "@types/chrome": "^0.0.312",
     "npm-check": "^6.0.1",
-    "pnpm": "^10.11.0",
+    "pnpm": "^10.7.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.3",
-    "web-ext": "^8.7.0"
+    "puppeteer-core": "^24.4.0",
+    "typescript": "^5.8.2",
+    "web-ext": "^8.5.0"
   }
 }
