@@ -25,7 +25,7 @@ let bindGotoSyncRemoteRulesEventListener = () => {
         }
       });
       console.log(new_rules_urls);
-      if (!new_rules_urls) {
+      if (new_rules_urls.length === 0) {
         return;
       }
       let result = await utils.fetchAll(new_rules_urls, utils.getContent);
@@ -34,27 +34,26 @@ let bindGotoSyncRemoteRulesEventListener = () => {
         //let dynamic_id_index = parseInt(new Date().getTime() / 1000);
         let dynamic_id_index = id_ranges["sync_remote_rule"][0];
         let need_rules = [];
+        let need_delete_rules = [];
         chrome.declarativeNetRequest.getDynamicRules((rules) => {
           rules.forEach((value, index, array) => {
             if (
               value.id >= id_ranges["sync_remote_rule"][0] &&
               value.id <= id_ranges["sync_remote_rule"][1]
             ) {
-              if (value.id >= dynamic_id_index) {
-                dynamic_id_index = value.id;
-              }
+              need_delete_rules.push(value.id);
             }
           });
 
-          console.log("sync_remote_rule latest dynamic_id :", dynamic_id_index);
+          console.log("sync_remote_rule dynamic_id:", dynamic_id_index);
           result.forEach((rules) => {
             rules.forEach((rule, index, array) => {
-              rule.id = ++dynamic_id_index;
+              rule.id = dynamic_id_index++;
               console.log(rule);
               need_rules.push(rule);
             });
           });
-          updateDynamicRules(need_rules, [], () => {
+          updateDynamicRules(need_rules, need_delete_rules, () => {
             showRuleList();
           });
         });
