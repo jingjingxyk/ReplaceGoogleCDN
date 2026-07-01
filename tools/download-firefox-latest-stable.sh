@@ -43,10 +43,23 @@ echo "${OS}-${ARCH}"
 
 case $OS in
 "Linux")
+  FIREFOX_OS="linux64"
+  case $ARCH in
+  "x86_64" | "amd64")
+    FIREFOX_OS="linux64"
+    ;;
+  "aarch64" | "arm64")
+    FIREFOX_OS="linux64-aarch64"
+    ;;
+  *)
+    echo "unsupported Linux ARCH: ${ARCH}"
+    exit 1
+    ;;
+  esac
   test -f firefox.tar.bz2 && rm -rf firefox.tar.bz2
   test -f firefox.tar.xz && rm -rf firefox.tar.xz
   test -d firefox && rm -rf firefox
-  curl -Lo firefox.tar.xz "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+  curl -fSLo firefox.tar.xz "https://download.mozilla.org/?product=firefox-latest&os=${FIREFOX_OS}&lang=en-US"
   tar -xJvf firefox.tar.xz
   ;;
 "Darwin")
