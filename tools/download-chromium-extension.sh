@@ -60,7 +60,7 @@ file_name='replace-google-cdn'
 
 download_url="https://clients2.google.com/service/update2/crx?response=redirect&prodversion=114.0.5726.0&acceptformat=crx2,crx3&x=id%3D${extension_id}%26uc&nacl_arch=x86-64"
 
-curl -Lo "${file_name}.crx" $download_url
+curl -fSLo "${file_name}.crx" "$download_url"
 
 # 使用不同的代理方式
 # proxychains curl -Lo google-translate.crx $download_url
@@ -68,8 +68,6 @@ curl -Lo "${file_name}.crx" $download_url
 # curl --proxy "socks5h://127.0.0.1:2000" -Lo google-translate.crx $download_url
 
 # crx 是经过定制的 zip 压缩格式文件
-set +e
 unzip -d ${file_name} "${file_name}.crx"
-set -e
 
 cd ${__PROJECT__}/var/chromium-extensions
