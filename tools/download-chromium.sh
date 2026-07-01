@@ -50,10 +50,20 @@ LASTCHANGE_URL=https://commondatastorage.googleapis.com/chromium-browser-snapsho
 if [ -z "$WITH_MIRROR" ]; then
   case $OS in
   "Linux")
-    LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media"
+    CHROMIUM_SNAPSHOT_PLATFORM="Linux_x64"
+    case $ARCH in
+    "x86_64" | "amd64")
+      CHROMIUM_SNAPSHOT_PLATFORM="Linux_x64"
+      ;;
+    *)
+      echo "unsupported Linux ARCH for Chromium snapshots: ${ARCH}"
+      exit 1
+      ;;
+    esac
+    LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/${CHROMIUM_SNAPSHOT_PLATFORM}%2FLAST_CHANGE?alt=media"
     REVISION=$(curl -s -S $LASTCHANGE_URL)
     echo "latest revision is $REVISION"
-    DOWNLOAD_CHROMIUM_URL="https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/$REVISION/chrome-linux.zip"
+    DOWNLOAD_CHROMIUM_URL="https://commondatastorage.googleapis.com/chromium-browser-snapshots/${CHROMIUM_SNAPSHOT_PLATFORM}/$REVISION/chrome-linux.zip"
     ;;
   "Darwin")
     CHROMIUM_SNAPSHOT_PLATFORM="Mac"
@@ -74,25 +84,36 @@ if [ -z "$WITH_MIRROR" ]; then
   esac
 else
   if [ "$WITH_MIRROR" = 'china' ]; then
+    CHROMIUM_MIRROR_PLATFORM=''
+    case $OS in
+    "Linux")
+      case $ARCH in
+      "x86_64" | "amd64")
+        CHROMIUM_MIRROR_PLATFORM='linux'
+        ;;
+      *)
+        echo "unsupported Linux ARCH for Chromium snapshots: ${ARCH}"
+        exit 1
+        ;;
+      esac
+      ;;
+    "Darwin")
+      if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+        CHROMIUM_MIRROR_PLATFORM='darwin-arm64'
+      else
+        CHROMIUM_MIRROR_PLATFORM='darwin'
+      fi
+      ;;
+    *)
+      CHROMIUM_MIRROR_PLATFORM='win'
+      ;;
+    esac
+
     # 默认来源于 https://registry.npmmirror.com/-/binary/chromium-browser-snapshots/
     test -d ${__PROJECT__}/var/.venv || bash ${__PROJECT__}/tools/python3-venv-install.sh
     . ${__PROJECT__}/var/.venv/bin/activate
     cd ${__DIR__}
-    case $OS in
-    "Linux")
-      DOWNLOAD_CHROMIUM_URL=$(python3 get-latest-chromium-version-main.py linux)
-      ;;
-    "Darwin")
-      if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
-        DOWNLOAD_CHROMIUM_URL=$(python3 get-latest-chromium-version-main.py darwin-arm64)
-      else
-        DOWNLOAD_CHROMIUM_URL=$(python3 get-latest-chromium-version-main.py darwin)
-      fi
-      ;;
-    *)
-      DOWNLOAD_CHROMIUM_URL=$(python3 get-latest-chromium-version-main.py win)
-      ;;
-    esac
+    DOWNLOAD_CHROMIUM_URL=$(python3 get-latest-chromium-version-main.py "$CHROMIUM_MIRROR_PLATFORM")
   fi
 fi
 
